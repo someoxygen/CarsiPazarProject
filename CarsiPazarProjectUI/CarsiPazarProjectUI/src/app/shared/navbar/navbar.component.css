@@ -1,0 +1,13 @@
+nav {
+  background: #333;
+  padding: 1rem;
+}
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+}

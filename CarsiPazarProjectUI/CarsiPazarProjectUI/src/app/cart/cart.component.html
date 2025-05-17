@@ -1,0 +1,46 @@
+<div class="container mt-5" *ngIf="cart?.items?.length > 0; else emptyCart">
+  <h3 class="mb-4 text-center">🛒 Sepetim</h3>
+
+  <table class="table table-bordered table-hover align-middle">
+    <thead class="table-light">
+      <tr>
+        <th>Ürün</th>
+        <th style="width: 100px;">Adet</th>
+        <th>Birim Fiyat</th>
+        <th>Toplam</th>
+        <th style="width: 60px;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cart.items">
+        <td>{{ item.product.name }}</td>
+        <td>
+          <input type="number"
+                 [value]="item.quantity"
+                 (change)="updateQuantity(item, $event)"
+                 class="form-control form-control-sm"
+                 min="1">
+        </td>
+        <td>{{ item.product.price | currency:'TRY' }}</td>
+        <td>{{ item.product.price * item.quantity | currency:'TRY' }}</td>
+        <td>
+          <button class="btn btn-sm btn-outline-danger" (click)="removeItem(item.id)">
+            <i class="bi bi-trash"></i>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="d-flex justify-content-between align-items-center mt-4">
+    <strong class="fs-5">Toplam: {{ total | currency:'TRY' }}</strong>
+    <button class="btn btn-outline-danger" (click)="clearCart()">Sepeti Temizle</button>
+  </div>
+</div>
+
+<ng-template #emptyCart>
+  <div class="text-center mt-5">
+    <h4>Sepetiniz boş.</h4>
+    <button class="btn btn-primary mt-3" (click)="goToProducts()">Alışverişe Başla</button>
+  </div>
+</ng-template>

@@ -1,0 +1,21 @@
+<div class="container mt-4">
+  <div class="row g-4">
+    <div class="col-md-3" *ngIf="stats">
+      <div class="card text-white bg-primary">
+        <div class="card-body">
+          <h5 class="card-title">Toplam Sipariş</h5>
+          <p class="card-text fs-4">{{ stats.totalOrders }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3" *ngIf="stats">
+      <div class="card text-white bg-success">
+        <div class="card-body">
+          <h5 class="card-title">Toplam Gelir</h5>
+          <p class="card-text fs-4">{{ stats.totalRevenue | currency }}</p>
+        </div>
+      </div>
+    </div>
+    <!-- Diğer kartlar -->
+  </div>
+</div>

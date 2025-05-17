@@ -1,0 +1,55 @@
+<div class="container mt-5">
+
+  <!-- Başlık ve Sepete Git Butonu -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="mb-0">Ürünler</h3>
+    <button class="btn btn-outline-primary" (click)="goToCart()">
+      <i class="bi bi-cart4"></i> Sepete Git
+    </button>
+  </div>
+
+  <!-- Ürün Kartları -->
+  <div class="row g-4">
+    <div class="col-md-4" *ngFor="let product of products">
+      <div class="card h-100 shadow-sm border-0">
+        <!-- Ürün görseli -->
+        <img *ngIf="product.imageUrl"
+             [src]="product.imageUrl"
+             class="card-img-top"
+             alt="Ürün görseli"
+             style="object-fit: cover; height: 200px;">
+
+        <!-- Kart gövdesi -->
+        <div class="card-body d-flex flex-column justify-content-between">
+          <!-- Ürün bilgileri -->
+          <div>
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text text-muted">{{ product.description }}</p>
+          </div>
+
+          <!-- Fiyat ve butonlar -->
+          <div class="mt-3">
+            <p class="fw-bold text-success mb-2">
+              {{ product.price | currency:'TRY':'symbol-narrow' }}
+            </p>
+
+            <!-- Sepete Ekle -->
+            <button class="btn btn-sm btn-primary mb-2 w-100" (click)="addToCart(product.id)">
+              <i class="bi bi-cart-plus"></i> Sepete Ekle
+            </button>
+
+            <!-- Admin işlemleri -->
+            <div *ngIf="authService.isAdmin()" class="d-flex justify-content-between">
+              <button class="btn btn-sm btn-outline-primary w-100 me-2" (click)="goToEdit(product.id)">
+                <i class="bi bi-pencil"></i> Düzenle
+              </button>
+              <button *ngIf="authService.isAdmin()" class="btn btn-sm btn-outline-danger w-100" (click)="deleteProduct(product.id)">
+                <i class="bi bi-trash"></i> Sil
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
