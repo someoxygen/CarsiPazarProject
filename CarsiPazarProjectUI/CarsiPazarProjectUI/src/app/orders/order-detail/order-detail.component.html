@@ -1,0 +1,15 @@
+<div class="container mt-5" *ngIf="order">
+  <h3>Sipariş #{{ order.id }}</h3>
+  <p><strong>Tarih:</strong> {{ order.createdAt | date:'short' }}</p>
+  <p><strong>Durum:</strong> {{ order.status }}</p>
+  <p><strong>Toplam:</strong> {{ order.totalPrice | currency:'TRY' }}</p>
+
+  <hr>
+
+  <h5>Ürünler</h5>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let item of order.items">
+      {{ item.productName }} x{{ item.quantity }} – {{ item.unitPrice | currency:'TRY' }}
+    </li>
+  </ul>
+</div>

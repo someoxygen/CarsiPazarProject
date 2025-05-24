@@ -1,0 +1,62 @@
+<div class="container mt-5">
+  <h3>💳 Ödeme Yap</h3>
+
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <!-- Ödeme Türü Seçimi -->
+  <div class="mb-4">
+    <label class="form-label">Ödeme Yöntemi</label>
+    <select class="form-select" [(ngModel)]="paymentMethod" name="paymentMethod" required>
+      <option value="kart">Kart ile Ödeme</option>
+      <option value="nakit">Kapıda Ödeme</option>
+    </select>
+  </div>
+
+  <form (ngSubmit)="submitPayment()">
+
+    <!-- Kart Bilgileri (Sadece kart seçildiyse göster) -->
+    <div *ngIf="paymentMethod === 'kart'">
+      <div class="mb-3">
+        <label for="cardNumber" class="form-label">Kart Numarası</label>
+        <input
+          [(ngModel)]="cardNumber"
+          name="cardNumber"
+          class="form-control"
+          placeholder="1234 5678 9012 3456"
+          required
+          pattern="\\d{16}"
+          title="16 haneli bir kart numarası girin.">
+      </div>
+
+      <div class="row mb-3">
+        <div class="col">
+          <label for="expiry" class="form-label">Son Kullanma Tarihi</label>
+          <input
+            [(ngModel)]="expiry"
+            name="expiry"
+            class="form-control"
+            placeholder="MM/YY"
+            required
+            pattern="^(0[1-9]|1[0-2])\/?([0-9]{2})$"
+            title="Geçerli bir tarih formatı girin (örnek: 12/25)">
+        </div>
+        <div class="col">
+          <label for="cvc" class="form-label">CVC</label>
+          <input
+            [(ngModel)]="cvc"
+            name="cvc"
+            class="form-control"
+            placeholder="123"
+            required
+            pattern="\\d{3}"
+            title="3 haneli CVC girin.">
+        </div>
+      </div>
+    </div>
+
+    <!-- Ödeme Yap Butonu -->
+    <button class="btn btn-success w-100" type="submit" [disabled]="loading">
+      {{ loading ? 'Ödeme Yapılıyor...' : (paymentMethod === 'nakit' ? 'Siparişi Tamamla' : 'Ödeme Yap') }}
+    </button>
+  </form>
+</div>

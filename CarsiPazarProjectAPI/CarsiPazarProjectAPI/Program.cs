@@ -1,4 +1,5 @@
 using System.Text;
+using System.Text.Json.Serialization;
 using CarsiPazarProjectAPI.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http.Features;
@@ -60,7 +61,10 @@ builder.Services.Configure<FormOptions>(o =>
 {
     o.MultipartBodyLengthLimit = 10 * 1024 * 1024; // 10 MB sýnýr
 });
-
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+});
 var app = builder.Build();
 app.UseAuthentication();
 app.UseAuthorization();

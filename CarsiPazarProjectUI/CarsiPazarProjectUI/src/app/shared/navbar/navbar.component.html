@@ -24,6 +24,9 @@
         <a class="nav-link" routerLink="/cart">Sepetim</a>
       </li>
       <li *ngIf="authService.isAdmin()" class="nav-item">
+        <a class="nav-link" routerLink="/admin/orders">Siparişler</a>
+      </li>
+      <li *ngIf="authService.isAdmin()" class="nav-item">
         <a class="nav-link" routerLink="/admin/dashboard">Dashboard</a>
       </li>
       <li *ngIf="authService.isLoggedIn()" class="nav-item">

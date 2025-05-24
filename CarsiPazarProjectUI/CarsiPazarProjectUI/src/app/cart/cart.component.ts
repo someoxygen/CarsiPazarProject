@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { OrderService } from '../services/order.service';
 
 @Component({
   selector: 'app-cart',
@@ -14,7 +15,7 @@ export class CartComponent implements OnInit {
   cart: any;
   total: number = 0;
 
-  constructor(private cartService: CartService, private router: Router) {}
+  constructor(private cartService: CartService, private orderService: OrderService, private router: Router) {}
 
   ngOnInit() {
     this.loadCart();
@@ -47,8 +48,23 @@ export class CartComponent implements OnInit {
   clearCart() {
     this.cartService.clearCart().subscribe(() => this.loadCart());
   }
+
   goToProducts() {
-  this.router.navigate(['/products']);
-}
+    this.router.navigate(['/products']);
+  }
+
+  goToPayment() {
+    this.router.navigate(['/payment']);
+  }
+
+  // checkout() {
+  //   this.orderService.createOrder().subscribe({
+  //     next: (res: any) => {
+  //       alert(`Siparişiniz başarıyla oluşturuldu! #${res.orderId}`);
+  //       this.router.navigate(['/orders']);
+  //     },
+  //     error: () => alert('Sipariş oluşturulamadı.')
+  //   });
+  // }
 }
 

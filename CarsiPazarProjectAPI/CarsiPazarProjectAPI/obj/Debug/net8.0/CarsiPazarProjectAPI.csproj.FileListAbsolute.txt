@@ -173,3 +173,4 @@ C:\Users\pjouf\OneDrive\Masaüstü\CarsiPazarProject\CarsiPazarProjectAPI\CarsiP
 C:\Users\pjouf\OneDrive\Masaüstü\CarsiPazarProject\CarsiPazarProjectAPI\CarsiPazarProjectAPI\obj\Debug\net8.0\CarsiPazarProjectAPI.pdb
 C:\Users\pjouf\OneDrive\Masaüstü\CarsiPazarProject\CarsiPazarProjectAPI\CarsiPazarProjectAPI\obj\Debug\net8.0\CarsiPazarProjectAPI.genruntimeconfig.cache
 C:\Users\pjouf\OneDrive\Masaüstü\CarsiPazarProject\CarsiPazarProjectAPI\CarsiPazarProjectAPI\obj\Debug\net8.0\ref\CarsiPazarProjectAPI.dll
+C:\Users\pjouf\OneDrive\Masaüstü\CarsiPazarProject\CarsiPazarProjectAPI\CarsiPazarProjectAPI\obj\Debug\net8.0\CarsiPazarProjectAPI.sourcelink.json

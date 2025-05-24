@@ -1,0 +1,29 @@
+<div class="container text-center mt-5" *ngIf="order">
+  <h2 class="text-success mb-3">🎉 Teşekkürler!</h2>
+  <p class="fs-5">Siparişiniz başarıyla oluşturuldu.</p>
+  <p class="text-muted">Sipariş numaranız: <strong>#{{ order.id }}</strong></p>
+  <p class="text-muted">
+    <strong>Durum:</strong> 
+    <span [ngClass]="{
+        'text-success': order.status === 'OdemeAlindi',
+        'text-primary': order.status === 'Hazırlanıyor',
+        'text-warning': order.status === 'KargoyaVerildi',
+        'text-muted': order.status === 'Beklemede',
+        'text-danger': order.status === 'IptalEdildi'
+    }">{{ order.status }}</span>
+    </p>
+
+  <div class="card text-start mt-4 mx-auto" style="max-width: 500px;">
+    <div class="card-header bg-light fw-bold">🧾 Sipariş Özeti</div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item" *ngFor="let item of order.items">
+        {{ item.productName }} x{{ item.quantity }} – {{ item.unitPrice | currency:'TRY' }}
+      </li>
+    </ul>
+    <div class="card-footer fw-bold text-end">
+      Toplam: {{ order.totalPrice | currency:'TRY' }}
+    </div>
+  </div>
+
+  <a class="btn btn-primary mt-4" routerLink="/products">Alışverişe Devam Et</a>
+</div>

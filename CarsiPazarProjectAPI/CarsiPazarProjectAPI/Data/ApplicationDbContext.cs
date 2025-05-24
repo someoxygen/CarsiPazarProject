@@ -15,6 +15,14 @@
         public DbSet<Order> Orders => Set<Order>();
         public DbSet<OrderItem> OrderItems => Set<OrderItem>();
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Order>()
+                .Property(o => o.Status)
+                .HasConversion<string>(); // enum'ı string olarak tut
+
+            base.OnModelCreating(modelBuilder);
+        }
 
     }
 

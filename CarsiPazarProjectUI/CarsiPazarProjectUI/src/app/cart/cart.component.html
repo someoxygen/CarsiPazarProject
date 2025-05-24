@@ -36,6 +36,12 @@
     <strong class="fs-5">Toplam: {{ total | currency:'TRY' }}</strong>
     <button class="btn btn-outline-danger" (click)="clearCart()">Sepeti Temizle</button>
   </div>
+
+  <div class="text-end mt-3">
+    <button class="btn btn-success px-4" (click)="goToPayment()">
+      <i class="bi bi-credit-card"></i> Siparişi Tamamla
+    </button>
+  </div>
 </div>
 
 <ng-template #emptyCart>

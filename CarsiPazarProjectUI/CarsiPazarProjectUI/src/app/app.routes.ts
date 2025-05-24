@@ -15,5 +15,10 @@ export const routes: Routes = [
   { path: 'auth/login', component: LoginComponent },
   { path: 'auth/register', component: RegisterComponent },
   { path: 'cart', component: CartComponent },
+  { path: 'orders', loadComponent: () => import('./orders/order-list.component').then(m => m.OrderListComponent) },
+  { path: 'payment', loadComponent: () => import('./payment/payment-page/payment-page.component').then(m => m.PaymentPageComponent) },
+  { path: 'thank-you', loadComponent: () => import('./payment/thank-you/thank-you.component').then(m => m.ThankYouComponent) },
+  { path: 'orders/:id', loadComponent: () => import('./orders/order-detail/order-detail.component').then(m => m.OrderDetailComponent)},
+  { path: 'admin/orders', canActivate: [AdminGuard], loadComponent: () => import('./admin/order-list/admin-order-list.component').then(m => m.AdminOrderListComponent)},
   { path: '', redirectTo: 'auth/login', pathMatch: 'full' }
 ];
